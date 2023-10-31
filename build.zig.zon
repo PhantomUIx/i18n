@@ -1,5 +1,5 @@
 .{
-  .name = "phantom.i18n",
+  .name = "phantom-i18n",
   .version = "0.1.0",
   .paths = .{"."},
   .dependencies = .{

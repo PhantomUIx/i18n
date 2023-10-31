@@ -16,7 +16,7 @@ pub fn build(b: *std.Build) void {
         },
     });
 
-    const phantom_i18n = b.addModule("phantom.i18n", .{
+    const phantom_i18n = b.addModule("phantom-i18n", .{
         .source_file = .{ .path = b.pathFromRoot("src/phantom.zig") },
         .dependencies = &.{
             .{
@@ -50,7 +50,7 @@ pub fn build(b: *std.Build) void {
         .optimize = optimize,
     });
 
-    exe_example.addModule("phantom.i18n", phantom_i18n);
+    exe_example.addModule("phantom-i18n", phantom_i18n);
     b.installArtifact(exe_example);
 
     if (!no_docs) {
