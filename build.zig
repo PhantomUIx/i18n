@@ -17,7 +17,7 @@ pub fn build(b: *std.Build) void {
     });
 
     const phantom_i18n = b.addModule("phantom.i18n", .{
-        .source_file = .{ .path = b.pathFromRoot("src/phantom.i18n.zig") },
+        .source_file = .{ .path = b.pathFromRoot("src/phantom.zig") },
         .dependencies = &.{
             .{
                 .name = "meta+",
@@ -30,7 +30,7 @@ pub fn build(b: *std.Build) void {
 
     const unit_tests = b.addTest(.{
         .root_source_file = .{
-            .path = b.pathFromRoot("src/phantom.i18n.zig"),
+            .path = b.pathFromRoot("src/phantom.zig"),
         },
         .target = target,
         .optimize = optimize,
