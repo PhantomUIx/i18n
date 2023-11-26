@@ -1,23 +1,8 @@
 const std = @import("std");
+const Phantom = @import("phantom");
 
-const Sdk = blk: {
-    const buildDeps = @import("root").dependencies;
-    for (buildDeps.root_deps) |dep| {
-        if (std.mem.eql(u8, dep[0], "phantom")) {
-            const pkg = @field(buildDeps.packages, dep[1]);
-            for (pkg.deps) |childDeps| {
-                if (std.mem.eql(u8, childDeps[0], "phantom-sdk")) {
-                    break :blk @field(buildDeps.packages, childDeps[1]).build_zig;
-                }
-            }
-        }
-    }
-
-    break :blk null;
-};
-
-pub usingnamespace if (@typeInfo(@TypeOf(Sdk)) != .Null) struct {
-    pub const phantomModule = Sdk.PhantomModule{};
+pub usingnamespace if (@typeInfo(@TypeOf(Phantom.Sdk)) != .Null) struct {
+    pub const phantomModule = Phantom.Sdk.PhantomModule{};
 } else struct {};
 
 pub fn build(b: *std.Build) void {
